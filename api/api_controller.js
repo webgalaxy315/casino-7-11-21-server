@@ -66,12 +66,11 @@ module.exports = {
                 token: token,
                 betAmount: bet_Amount
             }
-            console.log("betAmount=>>>", users[token].betAmount);
             try {
-                // await axios.post(process.env.PLATFORM_SERVER + "api/games/bet", {
-                //     token: users[token].token,
-                //     amount: users[token].betAmount
-                // });
+                await axios.post(process.env.PLATFORM_SERVER + "api/games/bet", {
+                    token: users[token].token,
+                    amount: users[token].betAmount
+                });
             } catch (err) {
                 throw new Error("BET ERROR!");
             }
@@ -93,11 +92,11 @@ module.exports = {
                 throw new Error("DATA ERROR!");
             }
             try {
-                // await axios.post(process.env.PLATFORM_SERVER + "api/games/winlose", {
-                //     token: users[token].token,
-                //     amount: earnAmount,
-                //     winState: earnAmount > 0 ? true : false
-                // });
+                await axios.post(process.env.PLATFORM_SERVER + "api/games/winlose", {
+                    token: users[token].token,
+                    amount: earnAmount,
+                    winState: earnAmount > 0 ? true : false
+                });
             } catch (err) {
                 throw new Error("SERVER ERROR!");
             }
